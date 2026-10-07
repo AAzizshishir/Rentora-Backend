@@ -110,10 +110,23 @@ FRONTEND_URL=http://localhost:3000
 | Properties   | CRUD, Image upload, Soft delete   |
 | Units        | CRUD, Image upload, Restore       |
 | Applications | Apply, Approve, Reject            |
+| Landlord applications | Tenant applications, Admin review and approval |
 | Leases       | Create, Confirm, Terminate        |
 | Payments     | Pay, Manual mark, Deposit refund  |
 | Maintenance  | Tickets, Assign, Resolve          |
 | Notices      | Create, Read tracking             |
+
+### Landlord applications
+
+Tenants submit `POST /api/landlord-applications` with `business_name`,
+`business_address`, `phone` (formatted as `+8801XXXXXXXXX`), `experience_years`,
+and optional `message`. No document uploads are collected. `GET
+/api/landlord-applications/me` returns the latest application or `null`.
+Admins can list applications at `GET /api/admin/landlord-applications` with
+optional `status`, `searchTerm`, `page`, and `limit` query parameters, inspect
+application details at `GET /api/admin/landlord-applications/:id`, and review them with
+`PATCH /api/admin/landlord-applications/:id/approve` or `PATCH
+/api/admin/landlord-applications/:id/reject` (JSON body: `{ "reason": "..." }`).
 
 ## 🔐 Roles
 

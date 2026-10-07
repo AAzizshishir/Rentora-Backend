@@ -52,6 +52,12 @@ enum LeaseApplicationStatus {
   expired      
 }
 
+enum LandlordApplicationStatus {
+  pending
+  approved
+  rejected
+}
+
 // Lease
 enum LeaseStatus {
   pending_tenant    

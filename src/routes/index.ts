@@ -7,6 +7,10 @@ import { leaseRoutes } from "../module/lease/lease.routes";
 import { paymentRoutes } from "../module/payment/payment.routes";
 import { maintenanceRoutes } from "../module/maintenance/maintenance.routes";
 import { noticeRoutes } from "../module/notice/notice.routes";
+import {
+  adminLandlordApplicationRoutes,
+  landlordApplicationRoutes,
+} from "../module/landlordApplication/landlordApplication.routes";
 
 const router = Router();
 
@@ -33,5 +37,9 @@ router.use("/maintenance", maintenanceRoutes);
 
 // Notice
 router.use("/notice", noticeRoutes);
+
+// Landlord application
+router.use("/landlord-applications", landlordApplicationRoutes);
+router.use("/admin/landlord-applications", adminLandlordApplicationRoutes);
 
 export const indexRoutes = router;

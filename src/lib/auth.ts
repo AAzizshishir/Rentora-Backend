@@ -11,7 +11,7 @@ export const auth = betterAuth({
   trustedOrigins: [
     "http://localhost:3000",
     "https://smartlease-frontend.onrender.com",
-    "https://smartlease-frontend.vercel.app",
+    "https://rentora-xyz.vercel.app",
   ],
   emailAndPassword: {
     enabled: true,

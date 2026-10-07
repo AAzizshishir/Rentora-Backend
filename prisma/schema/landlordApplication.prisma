@@ -1,0 +1,24 @@
+model LandlordApplication {
+  id                 String                        @id @default(uuid(7))
+  applicant_id       String
+  reviewed_by_id     String?
+
+  business_name      String
+  business_address   String
+  phone              String
+  experience_years   Int
+  message            String?
+  status             LandlordApplicationStatus     @default(pending)
+  rejection_reason   String?
+
+  applicant          User                          @relation("LandlordApplicationApplicant", fields: [applicant_id], references: [id])
+  reviewed_by        User?                         @relation("LandlordApplicationReviewer", fields: [reviewed_by_id], references: [id])
+
+  reviewed_at        DateTime?
+  created_at         DateTime                      @default(now())
+  updated_at         DateTime                      @updatedAt
+
+  @@index([applicant_id, created_at])
+  @@index([status, created_at])
+  @@map("landlord_applications")
+}

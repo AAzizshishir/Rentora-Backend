@@ -16,6 +16,8 @@ model User {
 
   properties                Property[]
   applications              LeaseApplication[] 
+  landlord_applications     LandlordApplication[] @relation("LandlordApplicationApplicant")
+  reviewed_landlord_applications LandlordApplication[] @relation("LandlordApplicationReviewer")
   tenant_leases             Lease[]                 @relation("TenantLeases")
   landlord_leases           Lease[]                 @relation("LandlordLeases")
   payments                  Payment[]               @relation("TenantPayments")

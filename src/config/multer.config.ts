@@ -2,7 +2,7 @@ import multer from "multer";
 import AppError from "../utils/AppError";
 import { StatusCodes } from "http-status-codes";
 
-const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
+const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/avif"];
 const MAX_SIZE = 5 * 1024 * 1024; // 5MB
 
 export const upload = multer({
@@ -13,7 +13,7 @@ export const upload = multer({
       return cb(
         new AppError(
           StatusCodes.BAD_REQUEST,
-          "Only JPEG, PNG and WEBP images are allowed",
+          "Only JPEG, PNG, WEBP and AVIF images are allowed",
         ) as any,
       );
     }

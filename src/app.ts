@@ -13,7 +13,7 @@ const app: Application = express();
 const allowedOrigins = [
   "http://localhost:3000",
   "https://smartlease-frontend.onrender.com",
-  "https://smartlease-frontend.vercel.app",
+  "https://rentora-xyz.vercel.app",
 ].filter(Boolean);
 
 app.use(

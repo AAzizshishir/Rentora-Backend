@@ -78,6 +78,12 @@ const getAllVacantUnits = async (query: Record<string, any>) => {
     .sort()
     .include({
       images: true,
+      property: {
+        select: {
+          city: true,
+          address: true,
+        },
+      },
     })
     .fields()
     .execute();
@@ -93,7 +99,15 @@ const getUnitById = async (id: string, property_id: string) => {
       property_id,
       is_deleted: false,
     },
-    include: { images: true },
+    include: {
+      images: true,
+      property: {
+        select: {
+          city: true,
+          address: true,
+        },
+      },
+    },
   });
 
   if (!unit) {

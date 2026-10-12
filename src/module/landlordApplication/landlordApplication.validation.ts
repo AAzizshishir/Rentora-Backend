@@ -1,15 +1,16 @@
 import { z } from "zod";
 
 export const createLandlordApplicationSchema = z.object({
-  business_name: z.string().trim().min(2).max(120),
-  business_address: z.string().trim().min(5).max(300),
+  property_name: z.string().trim().min(2).max(120),
+  property_address: z.string().trim().min(5).max(300),
+  property_city: z.string().trim().min(2).max(100),
   phone: z
     .string()
     .trim()
     .regex(/^\+8801[3-9]\d{8}$/, {
-      message: "Phone number must be +88 followed by a valid 11-digit Bangladesh mobile number",
+      message:
+        "Phone number must be +88 followed by a valid 11-digit Bangladesh mobile number",
     }),
-  experience_years: z.number().int().min(0).max(80),
   message: z.string().trim().max(1000).optional(),
 });
 

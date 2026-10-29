@@ -13,4 +13,19 @@ router.post(
   bannerController.createBanner,
 );
 
+router.get("/", bannerController.getAllBanners);
+
+router.patch(
+  "/:id",
+  authMiddleware(Role.ADMIN),
+  upload.single("image"),
+  bannerController.updateBanner,
+);
+
+router.delete(
+  "/:id",
+  authMiddleware(Role.ADMIN),
+  bannerController.deleteBanner,
+);
+
 export const bannerRoutes = router;

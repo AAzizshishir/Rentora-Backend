@@ -1,0 +1,38 @@
+model Banner {
+  id          String          @id @default(uuid())
+
+  // Image
+  imageUrl    String                          // desktop image
+  imagePublicId  String?                      // Cloudinary/S3 key, needed to delete the file later
+  altText     String?                         // accessibility + SEO
+
+  // Content
+  title       String
+  subtitle    String?
+  ctaText     String?                         // e.g. "Browse Apartments"
+  ctaLink     String?                         // e.g. "/properties"
+
+  // Display control
+  placement   BannerPlacement @default(HOME_HERO)
+  sortOrder   Int             @default(0)     // lower shows first
+  isActive    Boolean         @default(true)
+  startsAt    DateTime?
+  endsAt      DateTime?
+
+  // Audit (admin who manages it)
+  createdById String
+  updatedById String?
+
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  @@index([placement, isActive, sortOrder])
+  @@map("banners")
+}
+
+enum BannerPlacement {
+  HOME_HERO
+  SEARCH_PAGE
+  TENANT_DASHBOARD
+  LANDLORD_DASHBOARD
+}

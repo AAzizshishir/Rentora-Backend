@@ -11,8 +11,12 @@ import {
   adminLandlordApplicationRoutes,
   landlordApplicationRoutes,
 } from "../module/landlordApplication/landlordApplication.routes";
+import { bannerRoutes } from "../module/banner/banner.routes";
 
 const router = Router();
+
+// Banner Route
+router.use("/banner", bannerRoutes);
 
 // User
 router.use("/users", userRoutes);

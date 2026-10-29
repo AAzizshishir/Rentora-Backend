@@ -8,6 +8,7 @@ type UploadFolder =
   | "units"
   | "tickets"
   | "avatars"
+  | "banners"
   | "documents";
 
 export interface UploadResult {

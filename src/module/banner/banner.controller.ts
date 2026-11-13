@@ -40,6 +40,16 @@ const getAllBanners = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const getBannerById = catchAsync(async (req: Request, res: Response) => {
+  const banner = await bannerService.getBannerById(req.params.id as string);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: "Banner retrieved successfully",
+    data: banner,
+  });
+});
+
 // Update Banner
 const updateBanner = catchAsync(async (req: Request, res: Response) => {
   const adminId = req.user?.id;
@@ -74,6 +84,7 @@ const deleteBanner = catchAsync(async (req: Request, res: Response) => {
 export const bannerController = {
   createBanner,
   getAllBanners,
+  getBannerById,
   updateBanner,
   deleteBanner,
 };

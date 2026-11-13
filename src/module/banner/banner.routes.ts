@@ -15,7 +15,9 @@ router.post(
 
 router.get("/", bannerController.getAllBanners);
 
-router.patch(
+router.get("/:id", bannerController.getBannerById);
+
+router.put(
   "/:id",
   authMiddleware(Role.ADMIN),
   upload.single("image"),

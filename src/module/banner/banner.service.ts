@@ -74,6 +74,16 @@ const getAllBanners = async () => {
   return banners;
 };
 
+const getBannerById = async (id: string) => {
+  const banner = await prisma.banner.findUnique({
+    where: { id },
+  });
+  if (!banner) {
+    throw new AppError(StatusCodes.NOT_FOUND, "Banner not found");
+  }
+  return banner;
+};
+
 const updateBanner = async (
   adminId: string,
   id: string,
@@ -147,6 +157,7 @@ const deleteBanner = async (id: string) => {
 export const bannerService = {
   createBanner,
   getAllBanners,
+  getBannerById,
   updateBanner,
   deleteBanner,
 };
